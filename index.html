@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Invite for You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div id="slide1" class="slide active">
+            <div class="mailbox-box">
+                <div class="mail-icon">📬</div>
+                <h2>You have a letter...</h2>
+                <p>Click to open</p>
+                <button class="next-btn" onclick="nextSlide(2)">Open →</button>
+            </div>
+        </div>
+
+        <div id="slide2" class="slide">
+            <div class="letter-box">
+                <h2 class="script-font">Happy Valentine's Day!</h2>
+                <div class="letter-text">
+                    <p>Dear My Love,</p>
+                    <p>I wanted to create something special for you to express how much you mean to me.</p>
+                    <p>You make every day brighter, and I cherish every moment we share.</p>
+                    <p>I have a special question to ask you...</p>
+                </div>
+                <button class="next-btn" onclick="nextSlide(3)">Keep Reading →</button>
+            </div>
+        </div>
+
+        <div id="slide3" class="slide">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h1 class="valentines-title">Ticket Invitation</h1>
+                </div>
+                <div class="ticket-body">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/150" alt="Girlfriend" id="photo">
+                        <span class="stamp">Approved ❤️</span>
+                    </div>
+                    <p class="question">Will you be my Valentine?</p>
+                    <div class="rsvp-buttons">
+                        <button id="yes-btn" onclick="celebrate()">Yes, I will!</button>
+                        <button id="no-btn" onmouseover="moveNoButton()">No</button>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <p>Ticket ID: 02142024</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
