@@ -32,7 +32,7 @@ function celebrate() {
     setTimeout(() => nextSlide(4), 1200);
 }
 function createHearts() {
-    const symbols = ['🧡', '💗'];
+    const symbols = ['🧡', 'j🩷'];
     const heart = document.createElement('div');
     heart.classList.add('heart-float');
     heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
@@ -53,7 +53,7 @@ function nextSlide(slideNumber) {
     const currentSlide = document.getElementById('slide' + slideNumber);
     currentSlide.classList.add('active');
 
-    // KHUSUS SLIDE 3: Jalankan hujan hati 🧡💗
+    // KHUSUS SLIDE 3: Jalankan hujan hati 🧡🩷
     if(slideNumber === 3) {
         const heartInterval = setInterval(createHearts, 300); // Muncul setiap 0.3 detik
         
@@ -64,7 +64,7 @@ function nextSlide(slideNumber) {
 
 // Fungsi pembuat hati (Pastikan ini ada di script.js)
 function createHearts() {
-    const symbols = ['🧡', '💗'];
+    const symbols = ['🧡', '🩷'];
     const heart = document.createElement('div');
     heart.classList.add('heart-float');
     heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
