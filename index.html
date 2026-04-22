@@ -1,57 +1,107 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Invite for You</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Birthday Scrapbook | Premium Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="watermark-overlay" class="watermark-style">
+    PREVIEW VERSION - PAYMENT REQUIRED
+</div>
 
-    <div class="main-container">
+    <div id="bg-layer" class="bg-transition slide1-bg"></div>
 
+    <div id="live-clock" class="digital-clock">00:00:00</div>
+
+    <div class="floating-bg">
+        <div class="balloon pink"></div>
+        <div class="balloon maroon"></div>
+        <div class="balloon gold"></div>
+    </div>
+
+    <div class="container">
+        
         <div id="slide1" class="slide active">
-            <div class="mailbox-box">
-                <div class="mail-icon">📬</div>
-                <h2>You have a letter...</h2>
-                <p>Click to open</p>
-                <button class="next-btn" onclick="nextSlide(2)">Open →</button>
+            <div class="card intro-card" onclick="nextSlide(2)">
+                <div class="gift-animation">🎁</div>
+                <h2 class="script-font">You have a gift!</h2>
+                <p>Click the box to unwrap your surprise</p>
+                <div class="decor star1">✨</div>
             </div>
         </div>
 
         <div id="slide2" class="slide">
-            <div class="letter-box">
-                <h2 class="script-font">Happy Valentine's Day!</h2>
-                <div class="letter-text">
-                    <p>Dear My Love,</p>
-                    <p>I wanted to create something special for you to express how much you mean to me.</p>
-                    <p>You make every day brighter, and I cherish every moment we share.</p>
-                    <p>I have a special question to ask you...</p>
+            <div class="card video-card animate-pop">
+                <h2 class="script-font">A Special Message</h2>
+                <div class="video-container">
+                    <video id="birthday-video" controls>
+                        <source src="video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <button class="next-btn" onclick="nextSlide(3)">Keep Reading →</button>
+                <button class="primary-btn" onclick="nextSlide(3)">Continue →</button>
             </div>
         </div>
 
-        <div id="slide3" class="slide">
-            <div class="ticket">
-                <div class="ticket-header">
-                    <h1 class="valentines-title">Ticket Invitation</h1>
+        <div id="slide3" class="slide scrapbook-slide">
+    <div class="scrapbook-container">
+        <div class="photo-collage-column">
+<div class="sticker-container">
+    <img src="stitch.png" class="stitch-sticker" alt="Stitch and Angel">
+</div>
+
+            <div class="polaroid p1">
+                <img src="piazza1.jpg" alt="Every Moment">
+                <span class="p-caption">Every Moment ❤️</span>
+            </div>
+            <div class="polaroid p2">
+    <img src="piazza_cake.jpg" id="piazza-2" alt="Birthday Celebration">
+    <span class="p-caption">Sweet Moments 🎂</span>
+</div>
+<div class="polaroid">
+    <img src="stitch_tulip.png" alt="Stitch with Tulips">
+    <span class="p-caption">Surprise! 🌷🍰</span>
+</div>
+
+            <div class="polaroid p3">
+                <img src="piazza3.jpg" alt="Forever">
+                <span class="p-caption">Forever 😂</span>
+            </div>
+            <div class="polaroid p4">
+                <img src="ring.jpg" alt="The Promise">
+                <span class="p-caption">The Promise 💍</span>
+            </div>
+        </div>
+
+        <div class="letter-text-column">
+            <div class="love-symbols">🧡💗🧡💗🧡💗</div>
+
+            <div class="scrapbook-letter-body">
+                <p>maybe it was in the way you listened when I had nothing to say, or the way you smiled without even trying to.</p>
+                <p>I realized that home isn't always a place; sometimes it's a person who makes everything feel calmer, safer, and much warmer.</p>
+                <p>You have this gentle way of turning ordinary moments into something extraordinary, just by being there.</p>
+                <p>It’s not just about the big celebrations, but about choosing someone every single day.</p>
+            </div>
+            <div class="letter-footer">
+                <p class="love-signature">Always yours, Me</p>
+                <button class="scrapbook-btn" onclick="celebrate()">Finish →</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="slide4" class="slide">
+            <div class="card final-card animate-zoom">
+                <div class="flower-container">
+                    <img src="rose.jpg" alt="Red Roses" class="rose-img">
                 </div>
-                <div class="ticket-body">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/150" alt="Girlfriend" id="photo">
-                        <span class="stamp">Approved ❤️</span>
-                    </div>
-                    <p class="question">Will you be my Valentine?</p>
-                    <div class="rsvp-buttons">
-                        <button id="yes-btn" onclick="celebrate()">Yes, I will!</button>
-                        <button id="no-btn" onmouseover="moveNoButton()">No</button>
-                    </div>
-                </div>
-                <div class="ticket-footer">
-                    <p>Ticket ID: 02142024</p>
-                </div>
+                <h1 class="script-font">Happy Birthday! ❤️</h1>
+                <p>May your day be as bright as these roses.</p>
+                <div class="decor party1">🎉</div>
             </div>
         </div>
 
