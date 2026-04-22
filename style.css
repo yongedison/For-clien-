@@ -4,364 +4,143 @@ body { font-family: 'Poppins', sans-serif; height: 100vh; overflow: hidden; disp
 
 /* BACKGROUND SYSTEM */
 .bg-transition { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; transition: background 1.2s ease; }
-.slide1-bg { background: radial-gradient(circle, #5c0a0a, #2b0505); }
-.slide2-bg { background: #800000; }
-.slide3-bg { background: #fdf2f4; } 
-.slide4-bg { background: #000; }
+.slide1-bg { background: #000; } /* Intro Hati */
+.slide3-bg { background: #fdf2f4; } /* Scrapbook Pink asli */
+.slide4-bg { background: #000; } /* Mawar Akhir */
 
-/* WATERMARK AMAN (Paling Atas) */
+/* WATERMARK */
 .watermark-style {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
-    font-size: 3.5rem;
-    color: rgba(255, 0, 0, 0.15);
-    font-weight: bold;
-    z-index: 9999;
-    pointer-events: none;
-    white-space: nowrap;
-    text-transform: uppercase;
+    font-size: 3rem; color: rgba(255, 0, 0, 0.15);
+    font-weight: bold; z-index: 9999; pointer-events: none;
+    white-space: nowrap; text-transform: uppercase;
 }
 
 /* CLOCK */
-.digital-clock { position: absolute; top: 20px; right: 20px; font-family: 'VT323'; font-size: 1.5rem; color: #FFB6C1; background: rgba(0,0,0,0.5); padding: 5px 12px; border-radius: 8px; z-index: 20; }
-
-.container { width: 95%; max-width: 650px; z-index: 10; }
-
-/* CARD SYSTEM */
-.card { background: #fff; padding: 25px; border-radius: 20px; border: 3px solid #FFB6C1; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
-/* SCRAPBOOK CONTAINER (SLIDE 3) */
-.scrapbook-container {
-    display: flex;
-    background: #fff;
-    border-radius: 20px;
-    padding: 15px;
-    border: 3px solid #FFC0CB;
-    max-height: 85vh;
-    gap: 10px;
+.digital-clock { 
+    position: absolute; top: 20px; right: 20px; 
+    font-family: 'VT323'; font-size: 1.5rem; color: #FFB6C1; 
+    background: rgba(0,0,0,0.5); padding: 5px 12px; border-radius: 8px; z-index: 20; 
 }
 
-/* Update Kolom Foto Jadi Scroll Vertikal */
-.photo-collage-column {
-    flex: 1;
-    display: flex; /* Ubah dari grid ke flex */
-    flex-direction: column; /* Biar sejajar ke bawah */
-    gap: 20px; /* Jarak antar foto biar nggak mepet */
-    overflow-y: auto; /* Biar bisa di-scroll */
-    max-height: 70vh; /* Batasi tinggi area scroll-nya */
-    padding: 10px;
-    scrollbar-width: none; /* Hilangkan bar scroll biar rapi (Firefox) */
-}
-
-.photo-collage-column::-webkit-scrollbar {
-    display: none; /* Hilangkan bar scroll biar rapi (Chrome/Safari) */
-}
-
-/* Biar ukuran Polaroid-nya pas dan konsisten */
-.polaroid {
-    width: 100%;
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    flex-shrink: 0; /* Biar foto nggak memendek */
-}
-
-.polaroid img {
-    width: 100%;
-    height: auto; /* Biar proporsi foto asli (kayak foto cincin) tetap jelas */
-    border-radius: 3px;
-    display: block;
-}
-
-
-/* KOLOM TEKS */
-.letter-text-column {
-    flex: 1.2;
-    padding-left: 10px;
-    border-left: 1px dashed #FFC0CB;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.scrapbook-letter-body { font-size: 0.85rem; color: #444; line-height: 1.5; margin: 10px 0; overflow-y: auto; }
-.love-signature { font-family: 'Dancing Script'; font-size: 1.5rem; color: #5c0a0a; margin-top: auto; }
-
-/* BUTTONS */
-.primary-btn, .scrapbook-btn { background: #5c0a0a; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; margin-top: 10px; }
-
-/* ANIMASI BALON */
-.balloon { position: absolute; width: 30px; height: 40px; border-radius: 50%; opacity: 0.3; animation: floatUp 10s infinite linear; z-index: -1; }
-@keyframes floatUp { from { transform: translateY(110vh); } to { transform: translateY(-110vh); } }
+.container { width: 95%; max-width: 650px; z-index: 10; position: relative; }
 
 /* SLIDE LOGIC */
-.slide { display: none; }
-.slide.active { display: block; }
+.slide { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+.slide.active { display: flex; }
 .script-font { font-family: 'Dancing Script'; color: #5c0a0a; font-size: 2.2rem; }
-/* --- BAGIAN PERBAIKAN MAWAR --- */
 
-/* Atur posisi slide terakhir biar pas di tengah */
-#slide4.active {
-    display: flex !important; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* ================================== */
+/* CSS INTRO HATI (TAMBAHAN PIAZZA13) */
+/* ================================== */
+.heart-intro-wrapper { text-align: center; background: #000; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+#heart-container { position: relative; width: 300px; height: 300px; margin: 40px auto; z-index: 5; }
+.heart-photo {
+    position: absolute; width: 60px; height: 60px;
+    border: 2px solid #ff007f; border-radius: 10px;
+    box-shadow: 0 0 15px #ff007f; object-fit: cover;
+    transform: translate(-50%, -50%) scale(0);
+    animation: popIn 0.5s forwards ease-out;
 }
-
-/* Bingkai mawar (ini yang bikin gak raksasa lagi) */
-.flower-container {
-    width: 280px; /* Ukuran lebar bingkai */
-    height: 350px; /* Ukuran tinggi bingkai */
-    border-radius: 20px;
-    overflow: hidden;
-    border: 5px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    margin-bottom: 20px;
-}
-
-/* Gambar mawarnya dipaksa rapi didalam bingkai */
-.rose-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Biar gambar mawar gak gepeng */
-    display: block;
+@keyframes popIn { to { transform: translate(-50%, -50%) scale(1); } }
+.anniversary-title { color: #ff007f; text-shadow: 0 0 15px #ff007f; font-family: 'Courier New', monospace; font-size: 2rem; }
+.click-here-btn {
+    background: transparent; color: #fff; border: 2px solid #ff007f;
+    padding: 12px 25px; border-radius: 50px; cursor: pointer;
+    font-weight: bold; box-shadow: 0 0 10px #ff007f; transition: 0.3s; z-index: 10;
 }
 
-/* Kartu teks di bawah mawar */
-.final-card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    border: 2px solid #FFB6C1;
+/* ================================== */
+/* CSS KONSEP AWAL (SCRAPBOOK SLIDE)  */
+/* ================================== */
+.scrapbook-container {
+    display: flex; background: #fff; border-radius: 20px;
+    padding: 15px; border: 3px solid #FFC0CB; gap: 10px;
+    width: 100%; max-height: 85vh;
 }
-/* Sticker Stitch & Angel */
-.sticker-container {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 80px;
-    z-index: 5;
-    animation: bounce 2s infinite; /* Biar gerak-gerak lucu */
+.photo-collage-column {
+    flex: 1; display: flex; flex-direction: column; gap: 20px;
+    overflow-y: auto; max-height: 70vh; padding: 10px;
+    scrollbar-width: none; position: relative;
+}
+.photo-collage-column::-webkit-scrollbar { display: none; }
+.polaroid {
+    width: 100%; background: #fff; padding: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 5px; flex-shrink: 0;
+}
+.polaroid img { width: 100%; height: auto; border-radius: 3px; display: block; }
+.p-caption { font-size: 0.9rem; color: #444; margin-top: 5px; display: block; }
+.letter-text-column { flex: 1.2; padding-left: 10px; border-left: 1px dashed #FFC0CB; display: flex; flex-direction: column; text-align: left; }
+.scrapbook-letter-body { font-size: 0.85rem; color: #444; line-height: 1.5; margin: 10px 0; overflow-y: auto; }
+.love-signature { font-family: 'Dancing Script'; font-size: 1.5rem; color: #5c0a0a; margin-top: auto; padding-top: 10px; }
+
+/* Sticker Stitch Tetap di Pojok (Fixed) */
+.sticker-container { 
+    position: fixed; /* Ini kuncinya biar nggak ikut scroll */
+    bottom: 20px; 
+    left: 20px; 
+    width: 100px; /* Ukuran bisa lu sesuaikan */
+    z-index: 999; /* Biar selalu di depan */
+    animation: bounce 2s infinite;
+    pointer-events: none; /* Biar nggak ngehalangin pas mau klik foto di bawahnya */
 }
 
-.stitch-sticker {
-    width: 100%;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+.stitch-sticker { 
+    width: 100%; 
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); 
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-/* Animasi hati berdenyut */
-.love-symbols {
-    font-size: 1.5rem;
-    letter-spacing: 5px;
-    animation: pulseHearts 2s infinite;
+@keyframes bounce { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-15px); } 
 }
 
-@keyframes pulseHearts {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+/* Hati Berdenyut & Hujan Hati */
+.love-symbols { font-size: 1.5rem; letter-spacing: 5px; animation: pulseHearts 2s infinite; }
+@keyframes pulseHearts { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.heart-float { position: absolute; font-size: 1.2rem; pointer-events: none; z-index: 100; animation: heartFall linear forwards; }
+@keyframes heartFall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+
+/* VALENTINE BUTTONS */
+.btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+.yes-btn, .no-btn { padding: 10px 20px; border-radius: 20px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.yes-btn { background: #ff4d6d; color: white; }
+.no-btn { background: #666; color: white; }
+
+/* Tombol Finish Pink Goyang */
+.finish-btn {
+    display: none; background: #8b4513; color: white; border: none;
+    padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;
 }
-/* Animasi Hati Berjatuhan Khusus Oranye & Pink */
-.heart-float {
-    position: absolute;
-    font-size: 1.2rem;
-    pointer-events: none;
-    z-index: 100;
-    animation: heartFall linear forwards;
+.finish-goyang {
+    display: block !important;
+    animation: goyangHeboh 0.6s infinite !important;
+    background: #ff007f !important; /* Berubah jadi pink heboh */
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.8) !important;
+}
+@keyframes goyangHeboh {
+    0% { transform: scale(1.1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.1) rotate(0deg); }
+    75% { transform: scale(1.1) rotate(-5deg); }
+    100% { transform: scale(1.1) rotate(0deg); }
 }
 
-@keyframes heartFall {
-    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-}
-/* Efek Tombol Glossy */
-.finish-btn, .continue-btn { /* Sesuaikan dengan class tombolmu */
-    position: relative;
-    padding: 12px 25px;
-    background: linear-gradient(180deg, #ff4d6d 0%, #c9184a 100%); /* Warna dasar pink tua */
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    overflow: hidden; /* Penting biar efek kilapnya nggak keluar jalur */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
+/* ================================== */
+/* CSS MAWAR AKHIR (SLIDE 3) PERSIS   */
+/* ================================== */
+.card { background: #fff; padding: 25px; border-radius: 20px; border: 3px solid #FFB6C1; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.flower-container { width: 280px; height: 350px; border-radius: 20px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); margin: 0 auto 20px auto; }
+.rose-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.animate-zoom { animation: zoomIn 1s; }
+@keyframes zoomIn { from { transform: scale(0.1); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.decor { font-size: 2rem; margin-top: 10px; }
 
-/* Lapisan kilap (Gloss) */
-.finish-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%; /* Kilap cuma di setengah bagian atas */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 50px 50px 0 0;
-}
-
-/* Efek cahaya lewat (Swoosh) kalau di-hover */
-.finish-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: all 0.5s;
-}
-
-.finish-btn:hover::after {
-    left: 100%;
-}
-
-.finish-btn:active {
-    transform: scale(0.95); /* Efek membal pas diklik */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-/* Update Tombol Glossy Lebih Tajam */
-.finish-btn, .continue-btn {
-    position: relative;
-    padding: 12px 30px;
-    /* Warna gradasi dasar yang lebih kontras */
-    background: linear-gradient(to bottom, #ff5c7a 0%, #c9184a 100%); 
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    overflow: hidden;
-    /* Shadow lebih tebal biar tombol 'angkat' */
-    box-shadow: 0 6px 0 #8a0e32, 0 8px 15px rgba(0,0,0,0.3);
-    transition: all 0.2s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Garis tepi halus */
-}
-
-/* Lapisan Kaca Utama */
-.finish-btn::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 5%;
-    width: 90%;
-    height: 45%;
-    /* Putih susu transparan di atas */
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 100%);
-    border-radius: 40px 40px 20px 20px;
-    z-index: 1;
-}
-
-/* Kilatan Cahaya yang Gerak (Swoosh) */
-.finish-btn::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 80%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(30deg);
-    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: 2;
-}
-
-.finish-btn:hover::after {
-    left: 150%;
-}
-
-/* Efek pas ditekan (Biar kerasa mendem) */
-.finish-btn:active {
-    box-shadow: 0 2px 0 #8a0e32, 0 3px 10px rgba(0,0,0,0.3);
-    transform: translateY(4px);
-}
-.finish-btn, .continue-btn {
-    position: relative;
-    padding: 12px 30px;
-    /* Pakai gradasi cokelat keemasan biar mewah */
-    background: linear-gradient(180deg, #a67c52 0%, #5d4037 100%); 
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    font-weight: 800;
-    overflow: hidden;
-    /* Shadow ganda biar efek 3D-nya kuat */
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 
-                0 4px 10px rgba(0,0,0,0.5);
-    transition: all 0.2s;
-    cursor: pointer;
-}
-
-/* Lapisan Pantulan Cahaya (Ini kuncinya) */
-.finish-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    /* Bikin putihnya agak 'tebal' di bagian atas */
-    background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.4) 0%, 
-                rgba(255, 255, 255, 0.1) 100%);
-    z-index: 1;
-}
-
-/* Garis kilatan tajam di bagian paling atas */
-.finish-btn::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 10%;
-    width: 80%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.8);
-    filter: blur(1px);
-    z-index: 2;
-}
-/* Aturan khusus untuk layar Lebar (Laptop/Desktop) */
-@media (min-width: 768px) {
-    .scrapbook-container {
-        max-width: 900px; /* Batasi lebar maksimal biar nggak melar */
-        margin: 0 auto;   /* Biar posisinya di tengah layar laptop */
-        height: 80vh;     /* Tetap batasi tinggi biar scroll-nya aktif */
-        border: 10px solid #f8edeb; /* Kasih frame tambahan biar estetik */
-        border-radius: 20px;
-    }
-
-    .photo-collage-column {
-        flex: 0 0 40%; /* Kolom foto jangan terlalu lebar, cukup 40% */
-    }
-
-    .letter-text-column {
-        font-size: 1.1rem; /* Besarkan dikit ukuran font biar enak dibaca di monitor gede */
-    }
-}
-@media (min-width: 768px) {
-    /* ... kode yang tadi ... */
-
-    /* Tambahan buat foto mawar/akhir agar pas di desktop */
-    .ending-photo-wrapper img { 
-        width: 100%; /* Menyesuaikan lebar kontainer desktop */
-        max-width: 500px; /* Biar nggak kegedean banget di monitor raksasa */
-        height: auto;
-        display: block;
-        margin: 0 auto; /* Biar tetep di tengah */
-    }
-}
-.card-mawar {
-    width: 90%; /* Di HP */
-    max-width: 450px; /* Batas maksimal di Desktop biar estetik */
-    margin: 0 auto;
-}
+/* Balon */
+.balloon { position: absolute; width: 30px; height: 40px; border-radius: 50%; opacity: 0.3; animation: floatUp 10s infinite linear; z-index: -1; }
+.balloon.pink { background: #FFC0CB; }
+.balloon.maroon { background: #800000; left: 30%; animation-delay: 2s; }
+.balloon.gold { background: #D4AF37; left: 60%; animation-delay: 4s; }
+@keyframes floatUp { from { transform: translateY(110vh); } to { transform: translateY(-110vh); } }
