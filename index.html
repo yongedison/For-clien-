@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Scrapbook | Premium Edition</title>
+    <title>birthday Scrapbook | Special Premium Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="watermark-overlay" class="watermark-style">
-    PREVIEW VERSION - PAYMENT REQUIRED
-</div>
+    <div id="watermark-overlay" class="watermark-style">
+        PREVIEW VERSION - PAYMENT REQUIRED
+    </div>
 
     <div id="bg-layer" class="bg-transition slide1-bg"></div>
 
@@ -25,82 +25,73 @@
     <div class="container">
         
         <div id="slide1" class="slide active">
-            <div class="card intro-card" onclick="nextSlide(2)">
-                <div class="gift-animation">🎁</div>
-                <h2 class="script-font">You have a gift!</h2>
-                <p>Click the box to unwrap your surprise</p>
-                <div class="decor star1">✨</div>
+            <div class="heart-intro-wrapper">
+                <h1>Happy Birthday, Beautiful! 🎂❤️</h1>
+                <div id="heart-container"></div> 
+                <button class="click-here-btn" onclick="nextSlide(2)">ENTER SCRAPBOOK ❤️</button>
             </div>
         </div>
 
-        <div id="slide2" class="slide">
-            <div class="card video-card animate-pop">
-                <h2 class="script-font">A Special Message</h2>
-                <div class="video-container">
-                    <video id="birthday-video" controls>
-                        <source src="video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+        <div id="slide2" class="slide scrapbook-slide">
+            <div class="scrapbook-container">
+                <div class="photo-collage-column">
+                    <div class="sticker-container">
+                        <img src="stitch.png" class="stitch-sticker" alt="Stitch and Angel">
+                    </div>
+                    <div class="polaroid p1">
+                        <img src="piazza1.jpg" alt="Every Moment">
+                        <span class="p-caption">Every Moment ❤️</span>
+                    </div>
+                    <div class="polaroid p2">
+                        <img src="piazza_cake.jpg" id="piazza-2" alt="Birthday Celebration">
+                        <span class="p-caption">Sweet Moments 🎂</span>
+                    </div>
+                    <div class="polaroid">
+                        <img src="stitch_tulip.png" alt="Stitch with Tulips">
+                        <span class="p-caption">Surprise! 🌷🍰</span>
+                    </div>
+                    <div class="polaroid p3">
+                        <img src="piazza3.jpg" alt="Forever">
+                        <span class="p-caption">Forever 😂</span>
+                    </div>
+                    <div class="polaroid p4">
+                        <img src="ring.jpg" alt="The Promise">
+                        <span class="p-caption">The Promise 💍</span>
+                    </div>
                 </div>
-                <button class="primary-btn" onclick="nextSlide(3)">Continue →</button>
+
+                <div class="letter-text-column">
+                    <div class="love-symbols">🧡💗🧡💗🧡💗</div>
+                    <div class="scrapbook-letter-body">
+                        <p>maybe it was in the way you listened when I had nothing to say, or the way you smiled without even trying to.</p>
+                        <p>I realized that home isn't always a place; sometimes it's a person who makes everything feel calmer, safer, and much warmer.</p>
+                        <p>You have this gentle way of turning ordinary moments into something extraordinary, just by being there.</p>
+                        <p>It’s not just about the big celebrations, but about choosing someone every single day.</p>
+                    </div>
+
+                    <div class="rsvp-section">
+                        <h2>Make a special wish today? 🎂🩷</h2>
+                        <div class="btn-group">
+                            <button id="yesBtn" class="yes-btn">YES</button> 
+                            <button id="noBtn" class="no-btn">NO</button>
+                            <button id="finishBtn" class="finish-btn" onclick="celebrate()">Finish -></button>
+                        </div>
+                    </div>
+
+                    <div class="letter-footer">
+                        <p class="love-signature">Always yours, Me</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="slide3" class="slide scrapbook-slide">
-    <div class="scrapbook-container">
-        <div class="photo-collage-column">
-<div class="sticker-container">
-    <img src="stitch.png" class="stitch-sticker" alt="Stitch and Angel">
-</div>
-
-            <div class="polaroid p1">
-                <img src="piazza1.jpg" alt="Every Moment">
-                <span class="p-caption">Every Moment ❤️</span>
-            </div>
-            <div class="polaroid p2">
-    <img src="piazza_cake.jpg" id="piazza-2" alt="Birthday Celebration">
-    <span class="p-caption">Sweet Moments 🎂</span>
-</div>
-<div class="polaroid">
-    <img src="stitch_tulip.png" alt="Stitch with Tulips">
-    <span class="p-caption">Surprise! 🌷🍰</span>
-</div>
-
-            <div class="polaroid p3">
-                <img src="piazza3.jpg" alt="Forever">
-                <span class="p-caption">Forever 😂</span>
-            </div>
-            <div class="polaroid p4">
-                <img src="ring.jpg" alt="The Promise">
-                <span class="p-caption">The Promise 💍</span>
-            </div>
-        </div>
-
-        <div class="letter-text-column">
-            <div class="love-symbols">🧡🩷🧡🩷🧡🩷</div>
-
-            <div class="scrapbook-letter-body">
-                <p>maybe it was in the way you listened when I had nothing to say, or the way you smiled without even trying to.</p>
-                <p>I realized that home isn't always a place; sometimes it's a person who makes everything feel calmer, safer, and much warmer.</p>
-                <p>You have this gentle way of turning ordinary moments into something extraordinary, just by being there.</p>
-                <p>It’s not just about the big celebrations, but about choosing someone every single day.</p>
-            </div>
-            <div class="letter-footer">
-                <p class="love-signature">Always yours, Me</p>
-                <button class="scrapbook-btn" onclick="celebrate()">Finish →</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-        <div id="slide4" class="slide">
+        <div id="slide3" class="slide">
             <div class="card final-card animate-zoom">
                 <div class="flower-container">
                     <img src="rose.jpg" alt="Red Roses" class="rose-img">
                 </div>
                 <h1 class="script-font">Happy Birthday! ❤️</h1>
-                <p>May your day be as bright as these roses.</p>
+                <p>May your journey be as beautiful as these roses.</p>
                 <div class="decor party1">🎉</div>
             </div>
         </div>
@@ -111,3 +102,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+o
