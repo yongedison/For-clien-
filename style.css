@@ -348,3 +348,20 @@ body { font-family: 'Poppins', sans-serif; height: 100vh; overflow: hidden; disp
         font-size: 1.1rem; /* Besarkan dikit ukuran font biar enak dibaca di monitor gede */
     }
 }
+@media (min-width: 768px) {
+    /* ... kode yang tadi ... */
+
+    /* Tambahan buat foto mawar/akhir agar pas di desktop */
+    .ending-photo-wrapper img { 
+        width: 100%; /* Menyesuaikan lebar kontainer desktop */
+        max-width: 500px; /* Biar nggak kegedean banget di monitor raksasa */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Biar tetep di tengah */
+    }
+}
+.card-mawar {
+    width: 90%; /* Di HP */
+    max-width: 450px; /* Batas maksimal di Desktop biar estetik */
+    margin: 0 auto;
+}
