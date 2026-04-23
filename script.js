@@ -1,4 +1,16 @@
-// 1. Jam Real-time
+// 1. Fungsi Unlock (Gate QRIS)
+function unlockSurprise() {
+    const pass = document.getElementById('passcode').value.toLowerCase();
+    if(pass === "piazza13") {
+        document.getElementById('qris-gate').style.display = 'none';
+        nextSlide(1); 
+        createHeartAnimation(); 
+    } else {
+        alert("it's your name baby🩷");
+    }
+}
+
+// 2. Jam Real-time
 function updateClock() {
     const clockEl = document.getElementById('live-clock');
     if(clockEl) {
@@ -9,7 +21,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// 2. Fungsi Hujan Hati 🧡🩷
+// 3. Fungsi Hujan Hati (Slide 2)
 function createHearts() {
     const symbols = ['🧡', '🩷'];
     const heart = document.createElement('div');
@@ -22,7 +34,7 @@ function createHearts() {
     setTimeout(() => { heart.remove(); }, 5000);
 }
 
-// 3. Navigasi Slide
+// 4. Navigasi Slide
 function nextSlide(n) {
     document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
     const next = document.getElementById('slide' + n);
@@ -37,7 +49,7 @@ function nextSlide(n) {
         if(n === 2) {
             const heartInterval = setInterval(createHearts, 300);
             next.setAttribute('data-interval', heartInterval);
-            initBirthdayButtons(); // Panggil fungsi tombol birthday
+            initBirthdayButtons();
         } else {
             const slide2 = document.getElementById('slide2');
             if(slide2) {
@@ -48,7 +60,7 @@ function nextSlide(n) {
     }
 }
 
-// 4. Logika Tombol Birthday (Ganti dari Valentine)
+// 5. Logika Tombol Birthday
 function initBirthdayButtons() {
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
@@ -57,7 +69,7 @@ function initBirthdayButtons() {
     if (yesBtn) {
         yesBtn.onclick = function(e) {
             e.preventDefault(); 
-            alert('I hope all your birthday wishes come true! 🎂🚀🩷'); // Teks Birthday
+            alert('I hope all your birthday wishes come true! 🎂🚀🩷');
             if (finishBtn) {
                 finishBtn.style.display = 'block'; 
                 finishBtn.classList.add('finish-goyang');
@@ -66,7 +78,7 @@ function initBirthdayButtons() {
     }
 
     if (noBtn) {
-        noBtn.onmouseover = function() {
+        noBtn.onmouseover = noBtn.ontouchstart = function() {
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = 'fixed';
@@ -76,11 +88,12 @@ function initBirthdayButtons() {
     }
 }
 
-// 5. Animasi Intro Hati
+// 6. Animasi Hati (UKURAN SEDANG-BESAR + PAS DI LAYAR)
 function createHeartAnimation() {
     const container = document.getElementById('heart-container');
     const total = 14; 
     if(container) {
+        container.innerHTML = ''; 
         for (let i = 0; i < total; i++) {
             setTimeout(() => {
                 const img = document.createElement('img');
@@ -89,18 +102,19 @@ function createHeartAnimation() {
                 const angle = (i / total) * 2 * Math.PI;
                 const x = 16 * Math.pow(Math.sin(angle), 3);
                 const y = -(13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
-                img.style.left = `calc(50% + ${x * 8}px)`;
-                img.style.top = `calc(50% + ${y * 8}px)`;
+                
+                // SKALA DIKECILIN DIKIT BIAR GAK KELUAR LAYAR
+                const skala = 11; 
+                img.style.left = `calc(50% + ${x * skala}px)`;
+                img.style.top = `calc(50% + ${y * skala}px)`;
                 container.appendChild(img);
             }, i * 200);
         }
     }
 }
 
-// 6. Efek Confetti Akhir
+// 7. Efek Akhir
 function celebrate() {
     confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#5c0a0a', '#FFB6C1', '#D4AF37'] });
     setTimeout(() => nextSlide(3), 1200);
 }
-
-window.onload = createHeartAnimation;
