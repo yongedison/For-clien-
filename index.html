@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="qris-gate">
+        <div class="qris-card">
+            <h2 style="color: #ff007f; font-family: 'Poppins';">Scan to Unlock 🎂</h2>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=piazza13" class="qris-img">
+            <p style="font-size: 0.8rem; color: #fff; margin-bottom: 10px;">— OR ENTER CODE —</p>
+            <input type="text" id="passcode" placeholder="Secret Code..." class="qris-input">
+            <button onclick="unlockSurprise()" class="qris-btn">UNLOCK ✨</button>
+        </div>
+    </div>
+
     <div id="watermark-overlay" class="watermark-style">
         PREVIEW VERSION - PAYMENT REQUIRED
     </div>
@@ -24,8 +34,7 @@
 
     <div class="container">
         
-        <div id="slide1" class="slide active">
-            <div class="heart-intro-wrapper">
+        <div id="slide1" class="slide"> <div class="heart-intro-wrapper">
                 <h1>Happy Birthday, Beautiful! 🎂❤️</h1>
                 <div id="heart-container"></div> 
                 <button class="click-here-btn" onclick="nextSlide(2)">ENTER SCRAPBOOK ❤️</button>
@@ -61,7 +70,7 @@
                 </div>
 
                 <div class="letter-text-column">
-                    <div class="love-symbols">🧡💗🧡💗🧡💗</div>
+                    <div class="love-symbols">🧡🩷🧡🩷🧡🩷</div>
                     <div class="scrapbook-letter-body">
                         <p>maybe it was in the way you listened when I had nothing to say, or the way you smiled without even trying to.</p>
                         <p>I realized that home isn't always a place; sometimes it's a person who makes everything feel calmer, safer, and much warmer.</p>
@@ -102,4 +111,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-o
