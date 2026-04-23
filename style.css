@@ -1,14 +1,28 @@
 /* RESET & BASE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #000; }
+body { font-family: 'Poppins', sans-serif; height: 100vh; overflow: hidden; background: #000; }
+
+/* QRIS GATE OVERLAY */
+#qris-gate {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 10001; display: flex;
+    flex-direction: column; justify-content: center; align-items: center;
+}
+.qris-card {
+    background: #0a0a0a; border: 2px solid #ff007f; padding: 30px;
+    border-radius: 25px; text-align: center; max-width: 85%;
+    box-shadow: 0 0 20px #ff007f;
+}
+.qris-img { width: 180px; height: 180px; background: white; padding: 10px; border-radius: 15px; margin: 15px 0; border: 3px solid #ff007f; }
+.qris-input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ff007f; background: transparent; color: white; text-align: center; margin-bottom: 15px; }
+.qris-btn { background: #ff007f; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; }
 
 /* BACKGROUND SYSTEM */
 .bg-transition { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; transition: background 1.2s ease; }
-.slide1-bg { background: #000; } /* Intro Hati */
-.slide3-bg { background: #fdf2f4; } /* Scrapbook Pink asli */
-.slide4-bg { background: #000; } /* Mawar Akhir */
+.slide1-bg { background: #000; } 
+.slide3-bg { background: #fdf2f4; }
+.slide4-bg { background: #000; }
 
-/* WATERMARK */
 .watermark-style {
     position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
@@ -17,130 +31,75 @@ body { font-family: 'Poppins', sans-serif; height: 100vh; overflow: hidden; disp
     white-space: nowrap; text-transform: uppercase;
 }
 
-/* CLOCK */
 .digital-clock { 
     position: absolute; top: 20px; right: 20px; 
     font-family: 'VT323'; font-size: 1.5rem; color: #FFB6C1; 
     background: rgba(0,0,0,0.5); padding: 5px 12px; border-radius: 8px; z-index: 20; 
 }
 
+/* CONTAINER */
 .container { width: 95%; max-width: 650px; z-index: 10; position: relative; }
-
-/* SLIDE LOGIC */
 .slide { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; position: relative; }
 .slide.active { display: flex; }
-.script-font { font-family: 'Dancing Script'; color: #5c0a0a; font-size: 2.2rem; }
 
-/* ================================== */
-/* CSS INTRO HATI (TAMBAHAN PIAZZA13) */
-/* ================================== */
-.heart-intro-wrapper { text-align: center; background: #000; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-#heart-container { position: relative; width: 300px; height: 300px; margin: 40px auto; z-index: 5; }
+/* ANIMASI HATI DENGAN EFEK GLOSSY */
+.heart-intro-wrapper { text-align: center; background: #000; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
+#heart-container { 
+    position: relative; 
+    width: 100%; 
+    height: 400px; 
+    margin: 10px auto; 
+    z-index: 5; 
+}
 .heart-photo {
-    position: absolute; width: 60px; height: 60px;
-    border: 2px solid #ff007f; border-radius: 10px;
-    box-shadow: 0 0 15px #ff007f; object-fit: cover;
+    position: absolute; 
+    width: 65px; height: 65px; 
+    border: 2px solid rgba(255, 0, 127, 0.8); 
+    border-radius: 12px;
+    object-fit: cover;
     transform: translate(-50%, -50%) scale(0);
     animation: popIn 0.5s forwards ease-out;
-}
-@keyframes popIn { to { transform: translate(-50%, -50%) scale(1); } }
-.anniversary-title { color: #ff007f; text-shadow: 0 0 15px #ff007f; font-family: 'Courier New', monospace; font-size: 2rem; }
-.click-here-btn {
-    background: transparent; color: #fff; border: 2px solid #ff007f;
-    padding: 12px 25px; border-radius: 50px; cursor: pointer;
-    font-weight: bold; box-shadow: 0 0 10px #ff007f; transition: 0.3s; z-index: 10;
+    
+    /* EFEK GLOSSY/SHINE */
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
 }
 
-/* ================================== */
-/* CSS KONSEP AWAL (SCRAPBOOK SLIDE)  */
-/* ================================== */
-.scrapbook-container {
-    display: flex; background: #fff; border-radius: 20px;
-    padding: 15px; border: 3px solid #FFC0CB; gap: 10px;
-    width: 100%; max-height: 85vh;
+@keyframes popIn { to { transform: translate(-50%, -50%) scale(1); } }
+
+/* BUTTONS */
+.click-here-btn {
+    background: transparent; color: #fff; border: 2px solid #ff007f;
+    padding: 12px 30px; border-radius: 50px; cursor: pointer;
+    font-weight: bold; box-shadow: 0 0 15px #ff007f; transition: 0.3s; z-index: 10;
 }
-.photo-collage-column {
-    flex: 1; display: flex; flex-direction: column; gap: 20px;
-    overflow-y: auto; max-height: 70vh; padding: 10px;
-    scrollbar-width: none; position: relative;
-}
+
+/* SCRAPBOOK & KONTEN ASLI LU */
+.scrapbook-container { display: flex; background: #fff; border-radius: 20px; padding: 15px; border: 3px solid #FFC0CB; gap: 10px; width: 100%; max-height: 85vh; }
+.photo-collage-column { flex: 1; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; max-height: 70vh; padding: 10px; scrollbar-width: none; }
 .photo-collage-column::-webkit-scrollbar { display: none; }
-.polaroid {
-    width: 100%; background: #fff; padding: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 5px; flex-shrink: 0;
-}
+.polaroid { width: 100%; background: #fff; padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 5px; flex-shrink: 0; }
 .polaroid img { width: 100%; height: auto; border-radius: 3px; display: block; }
-.p-caption { font-size: 0.9rem; color: #444; margin-top: 5px; display: block; }
 .letter-text-column { flex: 1.2; padding-left: 10px; border-left: 1px dashed #FFC0CB; display: flex; flex-direction: column; text-align: left; }
 .scrapbook-letter-body { font-size: 0.85rem; color: #444; line-height: 1.5; margin: 10px 0; overflow-y: auto; }
 .love-signature { font-family: 'Dancing Script'; font-size: 1.5rem; color: #5c0a0a; margin-top: auto; padding-top: 10px; }
 
-/* Sticker Stitch Tetap di Pojok (Fixed) */
-.sticker-container { 
-    position: fixed; /* Ini kuncinya biar nggak ikut scroll */
-    bottom: 20px; 
-    left: 20px; 
-    width: 100px; /* Ukuran bisa lu sesuaikan */
-    z-index: 999; /* Biar selalu di depan */
-    animation: bounce 2s infinite;
-    pointer-events: none; /* Biar nggak ngehalangin pas mau klik foto di bawahnya */
-}
+/* STICKER STITCH */
+.sticker-container { position: fixed; bottom: 20px; left: 20px; width: 100px; z-index: 999; animation: bounce 2s infinite; pointer-events: none; }
+.stitch-sticker { width: 100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-.stitch-sticker { 
-    width: 100%; 
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); 
-}
-
-@keyframes bounce { 
-    0%, 100% { transform: translateY(0); } 
-    50% { transform: translateY(-15px); } 
-}
-
-/* Hati Berdenyut & Hujan Hati */
-.love-symbols { font-size: 1.5rem; letter-spacing: 5px; animation: pulseHearts 2s infinite; }
-@keyframes pulseHearts { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-.heart-float { position: absolute; font-size: 1.2rem; pointer-events: none; z-index: 100; animation: heartFall linear forwards; }
-@keyframes heartFall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
-
-/* VALENTINE BUTTONS */
+/* BUTTONS SLIDE 2 */
 .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
-.yes-btn, .no-btn { padding: 10px 20px; border-radius: 20px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.yes-btn { background: #ff4d6d; color: white; }
-.no-btn { background: #666; color: white; }
+.yes-btn { background: #ff4d6d; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
+.no-btn { background: #666; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
+.finish-btn { display: none; background: #ff007f; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; }
+.finish-goyang { display: block !important; animation: goyangHeboh 0.6s infinite !important; box-shadow: 0 0 20px rgba(255, 0, 127, 0.8) !important; }
+@keyframes goyangHeboh { 25% { transform: scale(1.1) rotate(5deg); } 75% { transform: scale(1.1) rotate(-5deg); } }
 
-/* Tombol Finish Pink Goyang */
-.finish-btn {
-    display: none; background: #8b4513; color: white; border: none;
-    padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;
-}
-.finish-goyang {
-    display: block !important;
-    animation: goyangHeboh 0.6s infinite !important;
-    background: #ff007f !important; /* Berubah jadi pink heboh */
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.8) !important;
-}
-@keyframes goyangHeboh {
-    0% { transform: scale(1.1) rotate(0deg); }
-    25% { transform: scale(1.1) rotate(5deg); }
-    50% { transform: scale(1.1) rotate(0deg); }
-    75% { transform: scale(1.1) rotate(-5deg); }
-    100% { transform: scale(1.1) rotate(0deg); }
-}
-
-/* ================================== */
-/* CSS MAWAR AKHIR (SLIDE 3) PERSIS   */
-/* ================================== */
-.card { background: #fff; padding: 25px; border-radius: 20px; border: 3px solid #FFB6C1; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-.flower-container { width: 280px; height: 350px; border-radius: 20px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); margin: 0 auto 20px auto; }
-.rose-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.animate-zoom { animation: zoomIn 1s; }
-@keyframes zoomIn { from { transform: scale(0.1); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.decor { font-size: 2rem; margin-top: 10px; }
-
-/* Balon */
+/* FINAL SLIDE */
+.card { background: #fff; padding: 25px; border-radius: 20px; border: 3px solid #FFB6C1; text-align: center; }
+.flower-container { width: 280px; height: 350px; border-radius: 20px; overflow: hidden; border: 5px solid #fff; margin: 0 auto 20px auto; }
+.rose-img { width: 100%; height: 100%; object-fit: cover; }
 .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50%; opacity: 0.3; animation: floatUp 10s infinite linear; z-index: -1; }
-.balloon.pink { background: #FFC0CB; }
-.balloon.maroon { background: #800000; left: 30%; animation-delay: 2s; }
-.balloon.gold { background: #D4AF37; left: 60%; animation-delay: 4s; }
 @keyframes floatUp { from { transform: translateY(110vh); } to { transform: translateY(-110vh); } }
